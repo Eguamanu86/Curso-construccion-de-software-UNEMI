@@ -1,0 +1,81 @@
+@startuml
+
+class Tienda{
+    nombre: string
+}
+
+class TipoProducto{
+    codigo: string
+    nombre: string
+    impuesto: decimal
+}
+
+class Producto{
+    codigo: string
+    nombre: string
+    stockActual: decimal
+    stockMinimo: decimal
+    precioBase: decimal
+}
+
+class Proveedor{
+    codigo: string
+    nombre: string
+}
+
+class Cliente{
+    codigo: string
+    nombre: string
+    direccion: string
+    email: string
+}
+
+class Bodega{
+    codigo: string
+    nombre: string
+    stock: string
+    direccion: string
+}
+
+class TipoPago{
+    codigo: string
+}
+
+class Efectivo
+class Tarjeta
+class CreditoDirecto
+
+
+class Venta{
+    numero: string
+    fecha: datetime
+    subtotal: decimal
+    descuento: decimal
+    impuesto: decimal
+    total: decimal
+}
+
+class VentaDetalle{
+    cantidad: decimal
+    precio: decimal
+    subtotal: decimal
+    total: decimal
+}
+
+Producto "1..*" --> "1" TipoProducto
+Producto "1..*" --> "1" Bodega
+Producto "1..*" --> "1" Proveedor
+
+TipoPago <|-- Efectivo
+TipoPago <|-- Tarjeta
+TipoPago <|-- CreditoDirecto
+
+Venta "0..*" --> "1" Cliente
+Venta "1..*" --* "1" TipoPago
+Venta "0..*" --* "1" Tienda
+
+
+Venta "1" --o "1..*" VentaDetalle
+VentaDetalle "*" --> "1" Producto
+
+@enduml
