@@ -1,0 +1,87 @@
+erdiagram Tienda
+
+notation = default 
+
+entity Cliente {
+    cliente_id : int key
+    nombre : string
+    direccion : string
+    email : string
+}
+
+entity Venta {
+    venta_id : int key 
+    fecha : datetime
+    subtotal : decimal
+    descuento : decimal 
+    impuesto : decimal 
+    total : decimal 
+}
+
+entity TipoPago {
+    pago_id : int key
+    nombre : string
+}
+
+entity VentaDetalle {
+    ventadet_id : int key 
+    cantidad : decimal 
+    precio : decimal 
+    subtotal : decimal
+    total : decimal
+}
+
+entity Producto {
+    Producto_id : int key
+    nombre : string 
+    stockActual : decimal 
+    stockMinimo : decimal 
+    PrecioBase : decimal 
+}
+
+entity Bodega {
+    Bodega_id : int key 
+    nombre : string 
+    stock : decimal
+    direccion : string
+}
+
+entity Categoria {
+    Categoria_id : int key
+    nombre : string
+}
+
+entity Proveedor  {
+    Proveedor_id : int key 
+    Nombre : string 
+}
+
+relationship hace {
+    Venta [0..N] -> Cliente [1]
+}
+
+relationship contiene {
+    Venta [1] -> VentaDetalle [1..N]
+    
+	attr1
+}
+
+relationship detalla {
+    VentaDetalle [1..N] -> Producto [1]
+}
+
+relationship almacena {
+    Bodega [1] -> Producto [1..N]
+}
+
+relationship se_cancela {
+    TipoPago [1] -> Venta [1..N]
+}
+
+relationship se_clasifica {
+    Producto [1..N] -> Categoria [1]
+}
+
+relationship Abastece {
+    Proveedor [1] -> Producto [N]
+}
