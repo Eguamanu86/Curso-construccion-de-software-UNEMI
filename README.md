@@ -35,6 +35,8 @@ Curso practico Python-DJango-PostgreSQL
         source venv/Scripts/activate
         python -m pip install --upgrade pip
         pip install -r venv-requirements.txt
+
+        Si no existe la carpeta del proyecto ejercutar los siguiente:
         mkdir django-backend
         django-admin startproject core django-backend/.
 

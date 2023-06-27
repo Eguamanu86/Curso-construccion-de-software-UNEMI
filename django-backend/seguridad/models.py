@@ -50,4 +50,5 @@ class User(AbstractBaseUser, PermissionsMixin):
 
     def get_group_session(self):
         request = get_current_request()
-        return Group.objects.filter(pk=request.session['group_id']).first()
+        return
+        #return Group.objects.filter(pk=request.session['group_id']).first()
