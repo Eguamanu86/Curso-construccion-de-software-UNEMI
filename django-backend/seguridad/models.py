@@ -1,12 +1,69 @@
+import os
 import uuid
-from django.db import models
-from django.utils import timezone
+import requests
 from crum import get_current_user
+from django.db import models
 from django.utils.translation import gettext_lazy as _
-from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin
+from django.utils import timezone
+from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin, Group, Permission
 from .managers import CustomUserManager
+from crum import get_current_request
 
-# Create your models here.
+## Modelos de auditoria
+class ModelBase(models.Model):
+    created_at = models.DateTimeField(auto_now_add=True, null=True)
+    created_by = models.CharField(max_length=100, blank=True, null=True, editable=False)
+    updated_at = models.DateTimeField(auto_now=True, null=True)
+    update_by = models.CharField(max_length=100, blank=True, null=True, editable=False)
+    deleted = models.BooleanField(default=False)
+    deleted_at = models.DateTimeField(blank=True, null=True, editable=False)
+    deleted_by = models.CharField(max_length=100, blank=True, null=True, editable=False)
+
+    def save(self, *args, **kwargs):
+        try:
+            user = get_current_user()
+            if self._state.adding:
+                self.created_by = user.username
+            else:
+                self.update_by = user.username
+        except:
+            pass
+
+        models.Model.save(self)
+
+    class Meta:
+        abstract = True
+
+class ModelBaseAudited(models.Model):
+    institution_id = models.IntegerField(verbose_name="Institución Code", blank=True, null=True, editable=False)
+    detail = models.CharField(max_length=1024, verbose_name="Detalle", blank=True, null=True, editable=False)
+    created_at = models.DateTimeField(auto_now_add=True, null=True)
+    created_by = models.CharField(max_length=100, blank=True, null=True, editable=False)
+    updated_at = models.DateTimeField(auto_now=True, null=True)
+    update_by = models.CharField(max_length=100, blank=True, null=True, editable=False)
+    deleted = models.BooleanField(default=False)
+    deleted_at = models.DateTimeField(blank=True, null=True, editable=False)
+    deleted_by = models.CharField(max_length=100, blank=True, null=True, editable=False)
+    deleted_reason = models.CharField(max_length=191, blank=True, null=True, editable=False)
+
+    def save(self, *args, **kwargs):
+        try:
+            user = get_current_user()
+            if self._state.adding:
+                self.created_by = user.username
+            else:
+                self.update_by = user.username
+        except:
+            pass
+
+        models.Model.save(self)
+
+    class Meta:
+        abstract = True
+
+## end auditoria
+
+## Modelo User, Personalizando modelo de Usuario
 class User(AbstractBaseUser, PermissionsMixin):
     pkid = models.BigAutoField(primary_key=True, editable=False)
     id = models.UUIDField(default=uuid.uuid4, editable=False, unique=True)
@@ -50,5 +107,14 @@ class User(AbstractBaseUser, PermissionsMixin):
 
     def get_group_session(self):
         request = get_current_request()
-        return
-        #return Group.objects.filter(pk=request.session['group_id']).first()
+        return Group.objects.filter(pk=request.session['group_id']).first()
+
+    def set_group_session(self):
+        try:
+            request = get_current_request()
+            if 'group' not in request.session:
+                group = request.user.groups.all().first()
+                if group is not None:
+                    request.session['group_id'] = group.id
+        except:
+            pass

@@ -42,6 +42,7 @@ INSTALLED_APPS = [
 
 THIRD_PARTY_APPS = [
     'crispy_forms',
+    'crispy_bootstrap5',
     'corsheaders',
     'rest_framework',
     'rest_framework_simplejwt'
@@ -64,6 +65,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
+    'crum.CurrentRequestUserMiddleware'
 ]
 
 ROOT_URLCONF = 'core.urls'
@@ -147,8 +150,19 @@ STATICFILES_DIRS = (
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'mediafiles'
-# Default primary key field type
-# https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
-#CORS_ALLOW_ALL_ORIGINS = True
-CRISPY_TEMPLATE_PACK = 'bootstrap4'
+MIDDLEWARE += ('crum.CurrentRequestUserMiddleware',)
+
+EMAIL_BACKEND = os.environ.get('EMAIL_BACKEND', '')
+EMAIL_HOST = os.environ.get('EMAIL_HOST', '')
+EMAIL_USE_TLS = bool(int(os.environ.get('EMAIL_USE_TLS', 0)))
+EMAIL_USE_SSL = bool(int(os.environ.get('EMAIL_USE_TLS', 0)))
+EMAIL_PORT = os.environ.get('EMAIL_PORT', '')
+EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER', '')
+EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD', '')
+
+
+CORS_ALLOW_ALL_ORIGINS = True
+
+CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
+CRISPY_TEMPLATE_PACK = "bootstrap5"

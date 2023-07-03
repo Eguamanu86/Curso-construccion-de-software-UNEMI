@@ -6,7 +6,8 @@ djangorestframework==3.12.4
 djangorestframework-simplejwt==4.8.0
 psycopg2==2.9.5
 PyJWT==2.1.0
-django-crispy-forms
+# django-crispy-forms
+crispy-bootstrap5
 django-countries==7.2.1
 django-phonenumber-field==5.2.0
 phonenumbers==8.12.33

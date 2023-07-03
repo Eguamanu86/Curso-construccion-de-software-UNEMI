@@ -31,11 +31,11 @@ logs:
 startapp:
 	docker exec -it dev-django-unemi python manage.py startapp $(app)
 
-makemigrations:
-	docker exec -it dev-django-unemi python manage.py makemigrations
+# makemigrations:
+# 	docker exec -it dev-django-unemi python manage.py makemigrations
 
-migrate:
-	docker exec -it dev-django-unemi python manage.py migrate
+# migrate:
+# 	docker exec -it dev-django-unemi python manage.py migrate
 
 createsuperuser:
 	docker exec -it dev-django-unemi python manage.py createsuperuser
@@ -48,3 +48,9 @@ diagram-grouped:
 
 runserver:
 	source venv/Scripts/activate && cd django-backend && set -a; source ../.env; set +a && python manage.py runserver 0.0.0.0:8001
+
+makemigrations:
+	source venv/Scripts/activate && cd django-backend && set -a; source ../.env; set +a && python manage.py makemigrations
+
+migrate:
+	source venv/Scripts/activate && cd django-backend && set -a; source ../.env; set +a && python manage.py migrate
