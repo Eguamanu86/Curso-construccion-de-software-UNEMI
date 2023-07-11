@@ -18,16 +18,16 @@
         <!-- place navbar here -->
     </header>
     <main class="form-signin">
-        <form>
+        <form id="id-form-login">
             <img class="mb-4" src="https://getbootstrap.com/docs/5.0/assets/brand/bootstrap-logo.svg" alt="" width="72" height="57">
             <h1 class="h3 mb-3 fw-normal">Login</h1>
 
             <div class="form-floating">
-                <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+                <input type="email" class="form-control" name="username" id="id-username" placeholder="name@example.com">
                 <label for="floatingInput">Correo</label>
             </div>
             <div class="form-floating">
-                <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
+                <input type="password" class="form-control" name="password" id="id-password" placeholder="Password">
                 <label for="floatingPassword">Contraseña</label>
             </div>
 
@@ -36,7 +36,7 @@
                     <input type="checkbox" value="remember-me"> Recordar
                 </label>
             </div>
-            <button class="w-100 btn btn-lg btn-primary" type="submit">Iniciar sesión</button>
+            <button class="w-100 btn btn-lg btn-primary">Iniciar sesión</button>
             <p class="mt-5 mb-3 text-muted">© 2023–2025</p>
         </form>
     </main>
@@ -51,6 +51,8 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js"
         integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz" crossorigin="anonymous">
         </script>
+
+    <script type="module" src="/static/js/login.js"></script>
 </body>
 
 </html>

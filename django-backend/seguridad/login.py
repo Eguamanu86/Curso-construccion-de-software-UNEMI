@@ -1,5 +1,6 @@
 from django.views.generic import TemplateView
 from django.contrib.auth import authenticate, login
+from django.http import JsonResponse
 
 class LoginPageView(TemplateView):
     template_name = 'seguridad/login.html'
@@ -8,7 +9,7 @@ class LoginPageView(TemplateView):
         status_code = None
         data = {'resp': False, 'error': None}
         try:
-            username = request.POST.get('correo')
+            username = request.POST.get('username')
             password = request.POST.get('password')
             user = authenticate(username=username,password=password)
 
