@@ -50,9 +50,8 @@ THIRD_PARTY_APPS = [
 
 LOCAL_APPS = [
     'seguridad',
-    # 'inventario',
-    # 'cliente',
-    # 'venta'
+    'inventario',
+    'venta',
 ]
 
 INSTALLED_APPS = INSTALLED_APPS + THIRD_PARTY_APPS + LOCAL_APPS
@@ -149,7 +148,7 @@ STATICFILES_DIRS = (
 )
 
 MEDIA_URL = '/media/'
-MEDIA_ROOT = BASE_DIR / 'mediafiles'
+MEDIA_ROOT = BASE_DIR / 'media'
 
 MIDDLEWARE += ('crum.CurrentRequestUserMiddleware',)
 

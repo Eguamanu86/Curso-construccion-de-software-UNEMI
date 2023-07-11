@@ -6,13 +6,12 @@ class TipoProductoAdmin(admin.ModelAdmin):
     list_display = (
         'codigo',
         'nombre',
-        'estado'
     )
     list_per_page = 10
     search_fields = ('codigo','nombre')
-    list_filter = (
-        'estado',
-    )
+    # list_filter = (
+    #     'estado',
+    # )
 
 admin.site.register(TipoProducto,TipoProductoAdmin)
 
@@ -41,12 +40,10 @@ class ProductoAdmin(admin.ModelAdmin):
         'tipo_producto',
         'stock_disponible',
         'pvp',
-        'estado'
     )
     list_per_page = 20
     search_fields = ('codigo','nombre')
     list_filter = (
         'tipo_producto',
-        'estado',
     )
 admin.site.register(Producto, ProductoAdmin)
