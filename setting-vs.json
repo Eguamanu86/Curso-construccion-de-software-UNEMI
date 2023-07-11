@@ -1,0 +1,103 @@
+{
+    "workbench.editorAssociations": {
+        "*.ipynb": "jupyter-notebook"
+    },
+    "notebook.cellToolbarLocation": {
+        "default": "right",
+        "jupyter-notebook": "left"
+    },
+    "explorer.confirmDelete": false,
+    "git.autofetch": true,
+    "git.enableSmartCommit": true,
+    "git.confirmSync": false,
+    "editor.formatOnSave": true,
+    "editor.fontLigatures": false,
+    "editor.fontWeight": "normal",
+    "workbench.colorTheme": "Atom One Dark",
+    "editor.formatOnPaste": true,
+    "tabnine.experimentalAutoImports": true,
+    "terminal.integrated.defaultProfile.windows": "Git Bash",
+    "files.insertFinalNewline": true,
+    "files.trimTrailingWhitespace": true,
+    "files.trimFinalNewlines": true,
+    "diffEditor.ignoreTrimWhitespace": false,
+    "launch": {
+        "configurations": [],
+        "compounds": []
+    },
+    "githd.logView.commitsCount": 300,
+    "githd.logView.expressMode": true,
+    "[json]": {
+        "editor.defaultFormatter": "vscode.json-language-features"
+    },
+    "editor.fontFamily": "Jetbrains Mono",
+    "terminal.integrated.fontFamily": "CaskaydiaCove Nerd Font Mono",
+    "editor.gotoLocation.multipleDefinitions": "goto",
+    "vetur.format.options.tabSize": 4,
+    "vetur.format.defaultFormatterOptions": {
+        "js-beautify-html": {
+            "wrap_attributes": "force-expand-multiline"
+        },
+        "prettyhtml": {
+            "printWidth": 100,
+            "singleQuote": false,
+            "wrapAttributes": false,
+            "sortAttributes": false
+        }
+    },
+    "prettier.tabWidth": 4,
+    "prettier.embeddedLanguageFormatting": "off",
+    "editor.detectIndentation": true,
+    "files.useExperimentalFileWatcher": true,
+    "files.legacyWatcher": "on",
+    "[javascript]": {
+        "editor.defaultFormatter": "vscode.typescript-language-features",
+        "editor.insertSpaces": true,
+        "editor.tabSize": 2,
+        // Format code
+        "editor.formatOnSave": true,
+        "editor.formatOnSaveMode": "modificationsIfAvailable",
+        "editor.formatOnPaste": true,
+        "editor.formatOnType": true,
+    },
+    "[python]": {
+        // Indentation
+        "editor.insertSpaces": true,
+        "editor.tabSize": 4,
+        // Format code
+        "editor.formatOnSave": true,
+        "editor.formatOnSaveMode": "modificationsIfAvailable",
+        "editor.formatOnPaste": true,
+        "gitlens.codeLens.symbolScopes": [
+            "!Module"
+        ]
+    },
+    "[php]": {
+        // Indentation
+        "editor.insertSpaces": true,
+        "editor.tabSize": 4,
+        // Format code
+        "editor.formatOnSave": true,
+        "editor.formatOnSaveMode": "modificationsIfAvailable",
+        "editor.formatOnPaste": true,
+        "editor.formatOnType": true,
+    },
+    "[shellscript]": {
+        "files.eol": "\n"
+    },
+    "terminal.integrated.fontSize": 13,
+    "editor.guides.bracketPairs": true,
+    "telemetry.telemetryLevel": "off",
+    "workbench.iconTheme": "vscode-simpler-icons",
+    "problems.decorations.enabled": false,
+    "python.analysis.autoSearchPaths": false,
+    "python.analysis.extraCommitChars": false,
+    "rapidapi.terminalLink.enabled": false,
+    "editor.accessibilityPageSize": 12,
+    "interactiveWindow.restore": true,
+    "update.mode": "start",
+    "debug.terminal.clearBeforeReusing": true,
+    "terminal.integrated.enableBell": true,
+    "editor.minimap.enabled": false,
+    "window.zoomLevel": 1
+}

@@ -1,0 +1,30 @@
+from django.views.generic import TemplateView
+from django.contrib.auth import authenticate, login
+
+class LoginPageView(TemplateView):
+    template_name = 'seguridad/login.html'
+
+    def post(self, request, *args, **kwargs):
+        status_code = None
+        data = {'resp': False, 'error': None}
+        try:
+            username = request.POST.get('correo')
+            password = request.POST.get('password')
+            user = authenticate(username=username,password=password)
+
+            if user is not None:
+                if user.is_active:
+                    login(request, user)
+                    status_code = 200
+                    data['resp'] = True
+                else:
+                    data['error'] = 'Login Fallido!, usuario no esta habilitado'
+            else:
+                data['error'] = 'Login Fallido!, credenciales incorrectas.'
+
+            status_code = 400
+        except Exception as e:
+            data['error'] = 'Error internal Server'
+            status_code = 500
+
+        return JsonResponse(data, status=status_code)
