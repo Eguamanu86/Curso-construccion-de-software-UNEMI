@@ -19,11 +19,12 @@ class LoginPageView(TemplateView):
                     status_code = 200
                     data['resp'] = True
                 else:
+                    status_code = 400
                     data['error'] = 'Login Fallido!, usuario no esta habilitado'
             else:
+                status_code = 400
                 data['error'] = 'Login Fallido!, credenciales incorrectas.'
 
-            status_code = 400
         except Exception as e:
             data['error'] = 'Error internal Server'
             status_code = 500

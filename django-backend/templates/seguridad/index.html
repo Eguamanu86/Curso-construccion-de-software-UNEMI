@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+
+
+{% block container-main %}
+
+    <div class="container-fluid">
+        <!-- start page title -->
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="page-title-box">
+                                    <div class="page-title-right">
+                                        <ol class="breadcrumb m-0">
+                                            <li class="breadcrumb-item"><a href="/">Inicio</a></li>
+                                        </ol>
+                                    </div>
+                                    <h4 class="page-title">Menu principal</h4>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- end page title -->
+
+                        <div class="row">
+
+
+                                    <div class="col-md-3">
+                                        <a href="{{ cm.module.url }}">
+                                            <div class="card" style="border:1px solid #CCC">
+                                                <div class="card-header bg-light" style="height:40px">
+                                                    <span class="text-dark">{{ gc.main_category.name }}</span>
+                                                </div>
+                                                <div class="card-body p-1" style="height:120px">
+                                                    <div class="text-center">
+                                                        <i class="{{ cm.module.icon }} fa-3x text-primary"></i>
+                                                    </div>
+                                                    <div class="text-center card-title">
+                                                        <h4 class="mt-1 text-dark">{{ cm.module.name }}</h4>
+                                                    </div>
+                                                </div> <!-- end card-body-->
+                                                <div class="card-footer" style="height:40px">
+                                                    <p class="mb-0 text-muted text-bold">
+                                                        <em class="text-nowrap">{{ cm.module.description|default:"" }}</em>
+                                                    </p>
+                                                </div>
+                                            </div> <!-- end card-->
+                                        </a>
+
+                                    </div>
+
+
+
+
+                        </div>
+                        <!-- end row -->
+    </div>
+
+{% endblock %}
