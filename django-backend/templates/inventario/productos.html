@@ -7,7 +7,7 @@
         <div class="position-sticky pt-3">
             <ul class="nav flex-column">
             <li class="nav-item">
-                <a class="nav-link" aria-current="page" href="/">
+                <a class="nav-link" href="/">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-home" aria-hidden="true"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
                 Dashboard
                 </a>
@@ -19,7 +19,7 @@
                 </a>
             </li>
             <li class="nav-item active">
-                <a class="nav-link" href="/inventario/productos">
+                <a class="nav-link" aria-current="page" href="/inventario/productos">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-shopping-cart" aria-hidden="true"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
                 Products
                 </a>
@@ -30,25 +30,39 @@
 
         <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4"><div class="chartjs-size-monitor"><div class="chartjs-size-monitor-expand"><div class=""></div></div><div class="chartjs-size-monitor-shrink"><div class=""></div></div></div>
         <h3>Listado de Productos</h3>
-        <div class="table-responsive">
+        <div class="row mt-2">
+            <div class="col-md-5">
+                <form method="GET" action="">
+                    <div class="input-group">
+                        <input class="form-control border-end-0 border" type="search" value="{{ s }}" id="example-search-input">
+                        <span class="input-group-append">
+                            <button class="btn btn-outline-secondary bg-white border-start-0 border-bottom-0 border ms-n5" type="submit">
+                                <i class="fa fa-search"></i>
+                            </button>
+                        </span>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="table-responsive mt-2">
             <table class="table table-striped table-sm">
             <thead>
                 <tr>
-                <th scope="col">#</th>
-                <th scope="col">Header</th>
-                <th scope="col">Header</th>
-                <th scope="col">Header</th>
-                <th scope="col">Header</th>
+                <th scope="col">Cod.</th>
+                <th scope="col">Nombre</th>
+                <th scope="col">Tipo</th>
+                <th scope="col">Precio</th>
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                <td>1,001</td>
-                <td>random</td>
-                <td>data</td>
-                <td>placeholder</td>
-                <td>text</td>
-                </tr>
+                {% for p in productos %}
+                    <tr>
+                        <td>{{ p.codigo }}</td>
+                        <td>{{ p.nombre }}</td>
+                        <td>{{ p.tipo_producto.nombre }}</td>
+                        <td>{{ p.pvp }}</td>
+                    </tr>
+                {% endfor %}
             </tbody>
             </table>
         </div>
