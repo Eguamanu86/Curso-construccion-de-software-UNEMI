@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import ListView
 from .models import Producto
+from django.db.models import Q
 
 class ProductoListView(LoginRequiredMixin, ListView):
     login_url = '/seguridad/login/'
@@ -13,9 +14,13 @@ class ProductoListView(LoginRequiredMixin, ListView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
+        context['search'] = self.request.GET.get('search', '')
         return context
 
     def get_queryset(self, **kwargs):
+        search = self.request.GET.get('search', '')
         return Producto.objects.filter(
-            deleted=False
+            Q(deleted=False),
+            Q(codigo__icontains=search) |
+            Q(nombre__icontains=search)
         )

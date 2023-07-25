@@ -31,10 +31,15 @@
         <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4"><div class="chartjs-size-monitor"><div class="chartjs-size-monitor-expand"><div class=""></div></div><div class="chartjs-size-monitor-shrink"><div class=""></div></div></div>
         <h3>Listado de Productos</h3>
         <div class="row mt-2">
+            <div class="col-md-2">
+                <a class="btn btn-success">
+                    <i class="fa fa-plus-circle"></i> Nuevo registro
+                </a>
+            </div>
             <div class="col-md-5">
                 <form method="GET" action="">
                     <div class="input-group">
-                        <input class="form-control border-end-0 border" type="search" value="{{ s }}" id="example-search-input">
+                        <input class="form-control border-end-0 border" name="search" type="search" value="{{ search }}" id="example-search-input">
                         <span class="input-group-append">
                             <button class="btn btn-outline-secondary bg-white border-start-0 border-bottom-0 border ms-n5" type="submit">
                                 <i class="fa fa-search"></i>
@@ -52,6 +57,7 @@
                 <th scope="col">Nombre</th>
                 <th scope="col">Tipo</th>
                 <th scope="col">Precio</th>
+                <th scope="col">Acciones</th>
                 </tr>
             </thead>
             <tbody>
@@ -61,6 +67,17 @@
                         <td>{{ p.nombre }}</td>
                         <td>{{ p.tipo_producto.nombre }}</td>
                         <td>{{ p.pvp }}</td>
+                        <td>
+                            <div class="dropdown">
+                                <button class="btn btn-small btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                                    Acciones
+                                </button>
+                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                    <li><a class="dropdown-item" href="#">Editar</a></li>
+                                    <li><a class="dropdown-item" href="#">Eliminar</a></li>
+                                </ul>
+                            </div>
+                        </td>
                     </tr>
                 {% endfor %}
             </tbody>
